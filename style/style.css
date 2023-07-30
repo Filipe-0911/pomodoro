@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Rubik:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: aquamarine;
+
+}
+
+
+.corpo {
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.titulo_destaque {
+    text-transform: uppercase;
+}

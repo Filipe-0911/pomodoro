@@ -2,16 +2,62 @@
 
 :root {
     --bg-color: aquamarine;
+    --font-principal: 'Roboto', sans-serif;
+    --letras-destaque: 2em;
+    --letras-sem-destaque:3em;
+    
 
 }
-
 
 .corpo {
     background-color: var(--bg-color);
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-family: var(--font-principal);
+    
+}
+.cabecalho {
+    font-weight: 300;
+    font-size: var(--letras-destaque);
+    margin: 3em 0;
+
 }
 .titulo_destaque {
     text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--font-principal);
+    
+}
+.apresentacao {
+    
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin-bottom: 5em;
+}
+.horas, .minutos, .segundos {
+    display: flex;
+    align-items: center;
+        
+}
+
+input {
+    font-weight: 400;
+    font-size: var(--letras-sem-destaque);
+    background: none;
+    border: 0;
+    width: 53px;
+    display: inline-flex;
+    text-align: center;
+}
+.material-icons {
+    font-size: 3em;
+}
+.rodape {
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    gap: 5em;
+
 }

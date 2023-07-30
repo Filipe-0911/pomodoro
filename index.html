@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/reset.css">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="./img/relogio.png" type="image/png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Pomodoro</title>
 </head>
+
 <body class="corpo">
     <header class="cabecalho">
         <section class="titulo">
             <h1 class="titulo_texto">Técnica de estudo/trabalho <span class="titulo_destaque">pomodoro</span>.</h1>
         </section>
     </header>
-    <main class="apresentacao"></main>
-    <footer class="rodape"></footer>
+    <main class="apresentacao">
+        <section class="horas">
+            <i class="medium material-icons" data-botao="soma">add</i>
+                <input type="text" class="horas" id="numeros" value="00" data-contador="horas">
+            <i class="medium material-icons" data-botao="subtrai">remove</i>
+        </section>
+        <section class="minutos">
+            <i class="medium material-icons" data-botao="soma">add</i>
+            <input type="text" class="minutos" id="numeros" value="00" data-contador="minutos">
+            <i class="medium material-icons" data-botao="subtrai">remove</i>
+        </section>
+        <section class="segundos">
+            <i class="medium material-icons" data-botao="soma">add</i>
+            <input type="text" class="segundos" id="numeros" value="00" data-contador="segundos">
+            <i class="medium material-icons" data-botao="subtrai">remove</i>
+        </section>
+    </main>
+    <footer class="rodape">
+        <i class="medium material-icons" data-botao="start">play_arrow</i>
+        <i class="medium material-icons" data-botao="pause">pause</i>
+        <i class="medium material-icons" data-botao="stop">stop</i>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
+
 </html>

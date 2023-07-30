@@ -84,7 +84,12 @@ function adicionaSegundos(numeros, div) {
 function iniciaContagem(horasMinutosSegundos) {
     
     horasMinutosSegundos.forEach(elemento => {
+        
         console.log(elemento.value)
         console.log(elemento.classList.value);
+
+        
+
+
     })
 }

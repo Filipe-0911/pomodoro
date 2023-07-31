@@ -1,5 +1,9 @@
 var botoes = document.querySelectorAll(`[data-botao]`);
 let contadores = document.querySelectorAll(`[data-contador]`);
+var divMensaqgem = document.getElementById(`div_mensagem`);
+var mensagemAExibir = document.getElementById(`mensagem`);
+var fecharMensagem = document.getElementById(`fechar`);
+var doisPontos = document.querySelectorAll(`.dois_pontos`);
 
 botoes.forEach(elemento => elemento.addEventListener(`click`, () => {
     const divDoBotao = elemento.parentNode;
@@ -43,7 +47,7 @@ function reduzTempo(div) {
         numeros.value = (parseInt(numeros.value) - 1)//.toFixed(2);
 
     } else {
-        alert('Você não pode inserir um valor negativo');
+        exibeMensagem(`Você não pode inserir um valor negativo`)
         
     }
 }
@@ -51,7 +55,7 @@ function reduzTempo(div) {
 function adicionaHoras(numeros, div) {
 
     if (numeros.value >= 10 && div == `horas`) {
-        alert(`Você não pode definir mais que 10 ${div.classList}`)
+        exibeMensagem(`Você não pode definir mais que 10 ${div.classList}`)
         
     } else {
         numeros.value = (parseInt(numeros.value) + 1).toFixed(0).padStart(2, '0');;
@@ -89,20 +93,42 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
-    console.log(botoes);
+    
+    botoes.forEach(elemento =>  {
+        //console.log(elemento.dataset.botao)
+
+        switch (elemento.dataset.botao) {
+            case `soma` : elemento.style.display = 'none';
+            break;
+            case `subtrai` : elemento.style.display = 'none';
+            break;
+        }
+    })
+
+    doisPontos.forEach(elemento => {
+        elemento.style.display = 'block';
+    })
+
     const cronometroInterval = setInterval(() => {
+
         if (segundos > 0) {
             segundos--;
+
         } else {
+
             if (minutos > 0) {
                 minutos--;
                 segundos = 59;
+
             } else {
+
                 if (horas > 0) {
                     horas--;
                     minutos = 59;
                     segundos = 59;
+
                 } else {
+
                     clearInterval(cronometroInterval);
                     exibeMensagem("Tempo esgotado!")
                 }
@@ -118,16 +144,45 @@ function iniciaContagem(horasMinutosSegundos) {
 
 }
 
-var divMensaqgem = document.getElementById(`div_mensagem`);
-var mensagemAExibir = document.getElementById(`mensagem`);
-var fecharMensagem = document.getElementById(`fechar`);
-
 function exibeMensagem (mensagem) {
     divMensaqgem.style.display = 'block';
-    mensagemAExibir.innerHTML = mensagem
+    mensagemAExibir.innerHTML = mensagem; 
 
     fecharMensagem.addEventListener(`click`, () => {
         divMensaqgem.style.display = 'none';
+
+        botoes.forEach(elemento => {
+            //console.log(elemento.dataset.botao)
+    
+            switch (elemento.dataset.botao) {
+                case `soma` : elemento.style.display = 'block';
+                break;
+                case `subtrai` : elemento.style.display = 'block';
+                break;
+            }
+        });
+
+        doisPontos.forEach(elemento => {
+            elemento.style.display = 'none';
+        });
+
     })
+
 }
 
+var exemplos = document.querySelectorAll('[data-exemplos]');
+
+
+
+exemplos.forEach(elemento => {
+    //console.log(elemento.innerText)
+
+    elemento.addEventListener('click', () => {
+        switch (elemento.innerText) {
+            case '25/5' : contadores[1].value = 25;
+            break;
+            case '50/10' : contadores[1].value = 50;
+            break;
+        }
+    })
+})

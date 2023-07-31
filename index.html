@@ -18,21 +18,25 @@
         </section>
     </header>
     <main class="apresentacao">
-        <section class="horas">
-            <i class="medium material-icons" data-botao="soma">add</i>
-            <input type="text" class="horas" id="numeros" value="00" data-contador="horas">
-            <i class="medium material-icons" data-botao="subtrai">remove</i>
-        </section>
-        <section class="minutos">
-            <i class="medium material-icons" data-botao="soma">add</i>
-            <input type="text" class="minutos" id="numeros" value="00" data-contador="minutos">
-            <i class="medium material-icons" data-botao="subtrai">remove</i>
-        </section>
-        <section class="segundos">
-            <i class="medium material-icons" data-botao="soma">add</i>
-            <input type="text" class="segundos" id="numeros" value="00" data-contador="segundos">
-            <i class="medium material-icons" data-botao="subtrai">remove</i>
-        </section>
+        <div class="cronometro">
+            <section class="horas">
+                <i class="medium material-icons" data-botao="soma">add</i>
+                <input type="text" class="horas" id="numeros" value="00" data-contador="horas">
+                <p class="dois_pontos">:</p>
+                <i class="medium material-icons" data-botao="subtrai">remove</i>
+            </section>
+            <section class="minutos">
+                <i class="medium material-icons" data-botao="soma">add</i>
+                <input type="text" class="minutos" id="numeros" value="00" data-contador="minutos">
+                <p class="dois_pontos">:</p>
+                <i class="medium material-icons" data-botao="subtrai">remove</i>
+            </section>
+            <section class="segundos">
+                <i class="medium material-icons" data-botao="soma">add</i>
+                <input type="text" class="segundos" id="numeros" value="00" data-contador="segundos">
+                <i class="medium material-icons" data-botao="subtrai">remove</i>
+            </section>
+        </div>
         <div id="div_mensagem">
             <section class="topo">
                 <h4 class="titulo-mensagem">Alerta</h4>
@@ -42,14 +46,20 @@
                 <p id="mensagem">oi</p>
             </section>
         </div>
-    </main>
-    <footer class="rodape">
-        
+        <section class="rodape_botoes">
             <i class="medium material-icons" data-botao="start">play_arrow</i>
             <i class="medium material-icons" data-botao="pause">pause</i>
             <i class="medium material-icons" data-botao="stop">stop</i>
-        
-
+        </section>
+    </main>
+    <footer class="rodape">
+        <section class="exemplos_pomodoro">
+            <h5 class="exemplos_titulo">Exemplos de divisão</h5>
+            <div class="exemplos">
+                <p class="exemplo1" data-exemplos="25">25/5</p>
+                <p class="exemplo2" data-exemplos="50">50/10</p>
+            </div>
+        </section>
     </footer>
     <script src="js/script.js"></script>
 </body>

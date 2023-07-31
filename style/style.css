@@ -170,3 +170,26 @@ input {
 #mensagem {
     text-align: center;
 }
+
+@media screen and (max-width:415px) {
+    :root {
+        --bg-color: aquamarine;
+        --font-principal: 'Roboto', sans-serif;
+        --letras-destaque: 1.5em;
+        --letras-sem-destaque: 2em;
+        --cor-botao-fechar: rgba(250, 255, 254);
+        --cor-box-shadow: rgba(0, 0, 0, 0.7);
+        --bg-exemplos-hover: rgb(61, 143, 116);
+        --bg-exemplos-hover-shadow: rgba(61, 143, 116, 0.9);
+    }
+    .apresentacao {
+        width: 80%;
+    }
+    .titulo_texto {
+        text-align: center;
+    }
+
+    .exemplo1, .exemplo2 {
+        padding: 0.3em;
+    }
+}

@@ -130,7 +130,7 @@ input {
 
 #div_mensagem {
     display: none;
-    width: 30%;
+    width: 20%;
     border: 1px solid var(--bg-color);
     border-radius: 5px;
     align-items: center;
@@ -145,6 +145,7 @@ input {
     display: flex;
     width: 100%;
     justify-content: center;
+    margin-right: 0 ;
     
 }
 
@@ -155,10 +156,11 @@ input {
     cursor: pointer;
     font-weight: 700;
     border: 1px solid black;
+    border-radius: 4px;
 }
 
 .titulo-mensagem {
-    margin:0 39%;
+    margin:0 42%;
     
 }
 .baixo {
@@ -191,5 +193,14 @@ input {
 
     .exemplo1, .exemplo2 {
         padding: 0.3em;
+    }
+
+    #div_mensagem {
+        width: 70%;
+    }
+
+    .titulo-mensagem {
+        margin:0 33.3% 0 45%;
+        
     }
 }

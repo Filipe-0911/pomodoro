@@ -4,38 +4,36 @@ var divMensaqgem = document.getElementById(`div_mensagem`);
 var mensagemAExibir = document.getElementById(`mensagem`);
 var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
+var exemplos = document.querySelectorAll('[data-exemplos]');
 
-botoes.forEach(elemento => elemento.addEventListener(`click`, () => {
+botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
-    const operacaoARealizar = elemento.innerText;
-
 
     switch (elemento.innerText) {
         case 'add': adicionaTempo(divDoBotao);
             break;
         case 'remove': reduzTempo(divDoBotao);
             break;
-        case `play_arrow` : iniciaContagem(contadores);
+        case `play_arrow`: iniciaContagem(contadores);
     }
 
-    //console.log(`A operação a realizar é ${operacaoARealizar}`)
 }))
 
 function adicionaTempo(div) {
 
     var numeros = div.querySelector('#numeros');
-    
+
     //console.log(div.classList[0]);
 
     switch (div.classList[0]) {
 
-        case `horas` : adicionaHoras(numeros, div.classList[0]);
-        break;
-        case `minutos` : adicionaMinutos(numeros, div.classList[0]);
-        break;
-        case `segundos` : adicionaSegundos(numeros, div.classList[0]);
-        break;
-        
+        case `horas`: adicionaHoras(numeros, div.classList[0]);
+            break;
+        case `minutos`: adicionaMinutos(numeros, div.classList[0]);
+            break;
+        case `segundos`: adicionaSegundos(numeros, div.classList[0]);
+            break;
+
     }
 
 }
@@ -44,46 +42,46 @@ function reduzTempo(div) {
     var numeros = div.querySelector('#numeros');
 
     if (numeros.value > 0) {
-        numeros.value = (parseInt(numeros.value) - 1)//.toFixed(2);
+        numeros.value = (parseInt(numeros.value) - 1).toString().padStart(2, '0');
 
     } else {
-        exibeMensagem(`Você não pode inserir um valor negativo`)
-        
+        exibeMensagem(`Você não pode inserir um valor negativo`);
+
     }
 }
 
 function adicionaHoras(numeros, div) {
 
     if (numeros.value >= 10 && div == `horas`) {
-        exibeMensagem(`Você não pode definir mais que 10 ${div.classList}`)
-        
+        exibeMensagem(`Você não pode definir mais que 10 ${div.classList}`);
+
     } else {
-        numeros.value = (parseInt(numeros.value) + 1).toFixed(0).padStart(2, '0');;
+        numeros.value = (parseInt(numeros.value) + 1).toString().padStart(2, '0');;;
     }
 }
 
 function adicionaMinutos(numeros, div) {
 
     if (numeros.value >= 59 && div == `minutos`) {
-        numeros.value = 0;
-        adicionaHoras(contadores[0], contadores[0].parentNode)
-    
+        numeros.value = (0).toString().padStart(2, '0');
+        adicionaHoras(contadores[0], contadores[0].parentNode);
+
     } else {
-        numeros.value = (parseInt(numeros.value) + 1).toFixed(0).padStart(2, '0');
+        numeros.value = (parseInt(numeros.value) + 1).toString().padStart(2, '0');;
     }
 
 }
 
 function adicionaSegundos(numeros, div) {
-    
+
     if (numeros.value >= 59 && div == `segundos`) {
 
-        numeros.value = 0;
-        adicionaHoras(contadores[1], contadores[1].parentNode)
-        
+        numeros.value = (0).toString().padStart(2, '0');
+        adicionaHoras(contadores[1], contadores[1].parentNode);
+
     } else {
 
-        numeros.value = (parseInt(numeros.value) + 1).toFixed(0).padStart(2, '0');
+        numeros.value = (parseInt(numeros.value) + 1).toString().padStart(2, '0');
 
     }
 }
@@ -93,15 +91,15 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
-    
-    botoes.forEach(elemento =>  {
+
+    botoes.forEach(elemento => {
         //console.log(elemento.dataset.botao)
 
         switch (elemento.dataset.botao) {
-            case `soma` : elemento.style.display = 'none';
-            break;
-            case `subtrai` : elemento.style.display = 'none';
-            break;
+            case `soma`: elemento.style.display = 'none';
+                break;
+            case `subtrai`: elemento.style.display = 'none';
+                break;
         }
     })
 
@@ -110,6 +108,8 @@ function iniciaContagem(horasMinutosSegundos) {
     })
 
     const cronometroInterval = setInterval(() => {
+
+        paraContagem(cronometroInterval);
 
         if (segundos > 0) {
             segundos--;
@@ -130,7 +130,8 @@ function iniciaContagem(horasMinutosSegundos) {
                 } else {
 
                     clearInterval(cronometroInterval);
-                    exibeMensagem("Tempo esgotado!")
+                    exibeMensagem("Tempo esgotado!");
+
                 }
             }
         }
@@ -144,21 +145,21 @@ function iniciaContagem(horasMinutosSegundos) {
 
 }
 
-function exibeMensagem (mensagem) {
+function exibeMensagem(mensagem) {
     divMensaqgem.style.display = 'block';
-    mensagemAExibir.innerHTML = mensagem; 
+    mensagemAExibir.innerHTML = mensagem;
 
     fecharMensagem.addEventListener(`click`, () => {
         divMensaqgem.style.display = 'none';
 
         botoes.forEach(elemento => {
             //console.log(elemento.dataset.botao)
-    
+
             switch (elemento.dataset.botao) {
-                case `soma` : elemento.style.display = 'block';
-                break;
-                case `subtrai` : elemento.style.display = 'block';
-                break;
+                case `soma`: elemento.style.display = 'block';
+                    break;
+                case `subtrai`: elemento.style.display = 'block';
+                    break;
             }
         });
 
@@ -170,19 +171,43 @@ function exibeMensagem (mensagem) {
 
 }
 
-var exemplos = document.querySelectorAll('[data-exemplos]');
-
-
-
 exemplos.forEach(elemento => {
-    //console.log(elemento.innerText)
 
     elemento.addEventListener('click', () => {
         switch (elemento.innerText) {
-            case '25/5' : contadores[1].value = 25;
-            break;
-            case '50/10' : contadores[1].value = 50;
-            break;
+            case '25/5': contadores[1].value = 25;
+                break;
+            case '50/10': contadores[1].value = 50;
+                break;
         }
-    })
+    });
+
 })
+
+function paraContagem(cronometroInterval) {
+    var botaoStop = botoes[8];
+    var botaoPause = botoes[7];
+    var mensagem = 'Você parou a contagem!';
+
+    botaoPause.addEventListener('click', () => {
+
+        contadores.forEach(elemento => {
+            clearInterval(cronometroInterval);
+        })
+
+        return exibeMensagem(mensagem);
+
+    })
+
+    botaoStop.addEventListener('click', () => {
+
+        contadores.forEach(elemento => {
+            elemento.value = (0).toString().padStart(2, '0');
+            clearInterval(cronometroInterval);
+        })
+
+        return exibeMensagem(mensagem);
+
+    })
+
+}

@@ -92,7 +92,7 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
-
+    
     botoes.forEach(elemento => {
         //console.log(elemento.dataset.botao)
 
@@ -129,7 +129,7 @@ function iniciaContagem(horasMinutosSegundos) {
                     segundos = 59;
 
                 } else {
-
+                    
                     audio.play();
                     clearInterval(cronometroInterval);
                     exibeMensagem("Tempo esgotado!");
@@ -149,8 +149,8 @@ function iniciaContagem(horasMinutosSegundos) {
 
 function exibeMensagem(mensagem) {
     divMensaqgem.style.display = 'block';
-    mensagemAExibir.innerHTML = mensagem;
-
+    mensagemAExibir.innerHTML = mensagem;  
+    
     fecharMensagem.addEventListener(`click`, () => {
         divMensaqgem.style.display = 'none';
 
@@ -163,6 +163,7 @@ function exibeMensagem(mensagem) {
                 case `subtrai`: elemento.style.display = 'block';
                     break;
             }
+            
         });
 
         doisPontos.forEach(elemento => {

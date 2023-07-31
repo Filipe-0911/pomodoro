@@ -5,6 +5,7 @@ var mensagemAExibir = document.getElementById(`mensagem`);
 var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
+const audio = new Audio('sound/alarme.mp3');
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -129,9 +130,10 @@ function iniciaContagem(horasMinutosSegundos) {
 
                 } else {
 
+                    audio.play();
                     clearInterval(cronometroInterval);
                     exibeMensagem("Tempo esgotado!");
-
+                    
                 }
             }
         }

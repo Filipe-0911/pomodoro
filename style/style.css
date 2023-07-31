@@ -5,7 +5,7 @@
     --font-principal: 'Roboto', sans-serif;
     --letras-destaque: 2em;
     --letras-sem-destaque:3em;
-    
+    --cor-botao-fechar: rgba(250, 255, 254);
 
 }
 
@@ -15,6 +15,7 @@
     align-items: center;
     flex-direction: column;
     font-family: var(--font-principal);
+    user-select: none;
     
 }
 .cabecalho {
@@ -30,9 +31,9 @@
     
 }
 .apresentacao {
-    
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5em;
     width: 60%;
     margin-bottom: 5em;
 }
@@ -53,11 +54,53 @@ input {
 }
 .material-icons {
     font-size: 3em;
+    cursor: pointer;
 }
 .rodape {
     display: flex;
-    width: 60%;
     justify-content: center;
-    gap: 5em;
+    width: 60%;
+    gap: 3em;
+    
 
+}
+
+#div_mensagem {
+    display: none;
+    width: 30%;
+    border: 1px solid var(--bg-color);
+    border-radius: 5px;
+    align-items: center;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.7);
+    background-color: var(--cor-botao-fechar);
+    position: absolute;
+    height: 20%;
+    
+}
+
+.topo {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+#fechar {
+    background-color: var(--cor-botao-fechar) ;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    border: 1px solid black;
+}
+
+.titulo-mensagem {
+    margin:0 39%;
+    
+}
+.baixo {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    
 }

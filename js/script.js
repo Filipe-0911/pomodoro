@@ -16,6 +16,7 @@ botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
         case 'remove': reduzTempo(divDoBotao);
             break;
         case `play_arrow`: iniciaContagem(contadores);
+            break;
     }
 
 }))

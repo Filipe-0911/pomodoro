@@ -6,9 +6,7 @@ var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
 const audio = new Audio('sound/alarme.mp3');
-let tempoEstudo = 0;
-let tempoDescanso = 0;
-let cicloPomodoro = [tempoEstudo,tempoDescanso]
+
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -19,7 +17,6 @@ botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
         case 'remove': reduzTempo(divDoBotao);
             break;
         case `play_arrow`: iniciaContagem(contadores);
-        iniciarDescanso(cicloPomodoro);
             break;
     }
 
@@ -137,7 +134,8 @@ function iniciaContagem(horasMinutosSegundos) {
                     
                     audio.play();
                     clearInterval(cronometroInterval);
-                    exibeMensagem("Tempo esgotado!");
+                    exibeMensagem(`Tempo esgotado.
+                    <button>Iniciar descanso</button>`);
                     
                 }
             }
@@ -148,7 +146,7 @@ function iniciaContagem(horasMinutosSegundos) {
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
         //console.log(`${horas} ${minutos} ${segundos}`);
-    }, 1000);
+    }, 10);
 
 }
 
@@ -179,17 +177,19 @@ function exibeMensagem(mensagem) {
 
 }
 
+var cicloPomodoro = [];
+
 exemplos.forEach(elemento => {
 
     elemento.addEventListener('click', () => {
         switch (elemento.innerText) {
             case '25/5': contadores[1].value = 25;
-            tempoEstudo = 25;
-            tempoDescanso = 5;
+            cicloPomodoro[0] = 25;
+            cicloPomodoro[1] = 5;
                 break;
             case '50/10': contadores[1].value = 50;
-            tempoEstudo = 50;
-            tempoDescanso = 10;
+            cicloPomodoro[0] = 50;
+            cicloPomodoro[1] = 10;
                 break;
         }
     });
@@ -221,10 +221,5 @@ function paraContagem(cronometroInterval) {
         return exibeMensagem(mensagem);
 
     })
-
-}
-
-function iniciarDescanso (cicloPomodoro) {
-    console.log(cicloPomodoro)
 
 }

@@ -33,6 +33,9 @@
     font-family: var(--font-principal);
     
 }
+.titulo_texto {
+    text-align: center;
+}
 .apresentacao {
     display: flex;
     flex-direction: column;
@@ -187,10 +190,6 @@ input {
     .apresentacao {
         width: 80%;
     }
-    .titulo_texto {
-        text-align: center;
-    }
-
     .exemplo1, .exemplo2 {
         padding: 0.3em;
     }

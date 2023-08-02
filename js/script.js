@@ -175,7 +175,7 @@ function exibeMensagem(mensagem, botaoParaAdicionar) {
         });
 
     })
-
+    //o novo bug foi causado pela adicao deste if
     if(elementoBaixoCaixaMsg.children.length == 0) {
 
         elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];

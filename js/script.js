@@ -146,7 +146,7 @@ function iniciaContagem(horasMinutosSegundos) {
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
         //console.log(`${horas} ${minutos} ${segundos}`);
-    }, 10);
+    }, 1000);
 
 }
 

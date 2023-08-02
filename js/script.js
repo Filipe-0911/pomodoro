@@ -1,10 +1,11 @@
 var botoes = document.querySelectorAll(`[data-botao]`);
-let contadores = document.querySelectorAll(`[data-contador]`);
-var divMensaqgem = document.getElementById(`div_mensagem`);
+const contadores = document.querySelectorAll(`[data-contador]`);
+var divMensagem = document.getElementById(`div_mensagem`);
 var mensagemAExibir = document.getElementById(`mensagem`);
 var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
+const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 const audio = new Audio('sound/alarme.mp3');
 
 
@@ -134,8 +135,7 @@ function iniciaContagem(horasMinutosSegundos) {
                     
                     audio.play();
                     clearInterval(cronometroInterval);
-                    exibeMensagem(`Tempo esgotado.
-                    <button>Iniciar descanso</button>`);
+                    exibeMensagem('Tempo esgotado.', criaBotaoDescanso());
                     
                 }
             }
@@ -150,12 +150,13 @@ function iniciaContagem(horasMinutosSegundos) {
 
 }
 
-function exibeMensagem(mensagem) {
-    divMensaqgem.style.display = 'block';
+function exibeMensagem(mensagem, botaoParaAdicionar) {
+
+    divMensagem.style.display = 'block';
     mensagemAExibir.innerHTML = mensagem;  
     
     fecharMensagem.addEventListener(`click`, () => {
-        divMensaqgem.style.display = 'none';
+        divMensagem.style.display = 'none';
 
         botoes.forEach(elemento => {
             //console.log(elemento.dataset.botao)
@@ -175,21 +176,35 @@ function exibeMensagem(mensagem) {
 
     })
 
+    if(elementoBaixoCaixaMsg.children.length == 0) {
+
+        elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+        
+    } else {
+        
+        if (elementoBaixoCaixaMsg.children[0].className == 'botaoDescanso') {
+            elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[1];
+        } else {
+            elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+        }
+    }
+    
 }
 
-var cicloPomodoro = [];
+var concentracao;
+var descanco;
 
 exemplos.forEach(elemento => {
 
     elemento.addEventListener('click', () => {
         switch (elemento.innerText) {
             case '25/5': contadores[1].value = 25;
-            cicloPomodoro[0] = 25;
-            cicloPomodoro[1] = 5;
+            concentracao = 25;
+            descanco = 5;
                 break;
             case '50/10': contadores[1].value = 50;
-            cicloPomodoro[0] = 50;
-            cicloPomodoro[1] = 10;
+            concentracao = 50;
+            descanco = 10;
                 break;
         }
     });
@@ -203,7 +218,7 @@ function paraContagem(cronometroInterval) {
 
     botaoPause.addEventListener('click', () => {
 
-        contadores.forEach(elemento => {
+        contadores.forEach(() => {
             clearInterval(cronometroInterval);
         })
 
@@ -222,4 +237,35 @@ function paraContagem(cronometroInterval) {
 
     })
 
+}
+
+function criaBotaoDescanso () {
+
+    const botaoIniciarDescanso = `<button class="botaoDescanso" onclick="iniciaDescanso()">Iniciar Descanso</button>`
+    const botaoReiniciaConcentracao = `<button class="botaoConcentracao" onclick="iniciaConcentracao()">Iniciar Concentracao</button>`
+    const botoesCicloPomodoro = [botaoIniciarDescanso, botaoReiniciaConcentracao];
+
+    return botoesCicloPomodoro;
+}
+
+function iniciaDescanso () {
+    
+    contadores[1].value = descanco.toString().padStart(2, '0');
+
+    console.log(contadores[1].value);
+
+    divMensagem.style.display = 'none';
+
+    iniciaContagem(contadores)
+}
+
+function iniciaConcentracao () {
+
+    contadores[1].value = concentracao.toString().padStart(2, '0');
+
+    console.log(contadores[1].value);
+
+    divMensagem.style.display = 'none';
+
+    iniciaContagem(contadores);
 }

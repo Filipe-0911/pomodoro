@@ -175,20 +175,22 @@ function exibeMensagem(mensagem, botaoParaAdicionar) {
         });
 
     })
-    //o novo bug foi causado pela adicao deste if
-    if(elementoBaixoCaixaMsg.children.length == 0) {
+    
+    if (botaoParaAdicionar) {
 
-        elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
-        
-    } else {
-        
-        if (elementoBaixoCaixaMsg.children[0].className == 'botaoDescanso') {
-            elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[1];
-        } else {
+        if(elementoBaixoCaixaMsg.children.length == 0) {
+
             elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+            
+        } else {
+            
+            if (elementoBaixoCaixaMsg.children[0].className == 'botaoDescanso') {
+                elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[1];
+            } else {
+                elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+            }
         }
     }
-    
 }
 
 var concentracao;

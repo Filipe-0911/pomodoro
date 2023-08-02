@@ -1,11 +1,13 @@
 var botoes = document.querySelectorAll(`[data-botao]`);
-let contadores = document.querySelectorAll(`[data-contador]`);
-var divMensaqgem = document.getElementById(`div_mensagem`);
+const contadores = document.querySelectorAll(`[data-contador]`);
+var divMensagem = document.getElementById(`div_mensagem`);
 var mensagemAExibir = document.getElementById(`mensagem`);
 var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
+const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 const audio = new Audio('sound/alarme.mp3');
+
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -93,7 +95,7 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
-    
+
     botoes.forEach(elemento => {
         //console.log(elemento.dataset.botao)
 
@@ -130,11 +132,11 @@ function iniciaContagem(horasMinutosSegundos) {
                     segundos = 59;
 
                 } else {
-                    
+
                     audio.play();
                     clearInterval(cronometroInterval);
-                    exibeMensagem("Tempo esgotado!");
-                    
+                    exibeMensagem('Tempo esgotado.', criaBotaoDescanso());
+
                 }
             }
         }
@@ -144,16 +146,17 @@ function iniciaContagem(horasMinutosSegundos) {
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
         //console.log(`${horas} ${minutos} ${segundos}`);
-    }, 1000);
+    }, 10);
 
 }
 
-function exibeMensagem(mensagem) {
-    divMensaqgem.style.display = 'block';
-    mensagemAExibir.innerHTML = mensagem;  
-    
+function exibeMensagem(mensagem, botaoParaAdicionar) {
+
+    divMensagem.style.display = 'block';
+    mensagemAExibir.innerHTML = mensagem;
+
     fecharMensagem.addEventListener(`click`, () => {
-        divMensaqgem.style.display = 'none';
+        divMensagem.style.display = 'none';
 
         botoes.forEach(elemento => {
             //console.log(elemento.dataset.botao)
@@ -164,7 +167,7 @@ function exibeMensagem(mensagem) {
                 case `subtrai`: elemento.style.display = 'block';
                     break;
             }
-            
+
         });
 
         doisPontos.forEach(elemento => {
@@ -173,15 +176,40 @@ function exibeMensagem(mensagem) {
 
     })
 
+    if (botaoParaAdicionar) {
+
+        if (elementoBaixoCaixaMsg.children.length == 0) {
+
+            elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+
+        } else {
+
+            if (elementoBaixoCaixaMsg.children[0].className == 'botaoDescanso') {
+
+                elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[1];
+
+            } else {
+                
+                elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
+            }
+        }
+    }
 }
+
+var concentracao;
+var descanco;
 
 exemplos.forEach(elemento => {
 
     elemento.addEventListener('click', () => {
         switch (elemento.innerText) {
             case '25/5': contadores[1].value = 25;
+                concentracao = 25;
+                descanco = 5;
                 break;
             case '50/10': contadores[1].value = 50;
+                concentracao = 50;
+                descanco = 10;
                 break;
         }
     });
@@ -195,7 +223,7 @@ function paraContagem(cronometroInterval) {
 
     botaoPause.addEventListener('click', () => {
 
-        contadores.forEach(elemento => {
+        contadores.forEach(() => {
             clearInterval(cronometroInterval);
         })
 
@@ -214,4 +242,35 @@ function paraContagem(cronometroInterval) {
 
     })
 
+}
+
+function criaBotaoDescanso() {
+
+    const botaoIniciarDescanso = `<button class="botaoDescanso" onclick="iniciaDescanso()">Iniciar Descanso</button>`
+    const botaoReiniciaConcentracao = `<button class="botaoConcentracao" onclick="iniciaConcentracao()">Iniciar Concentracao</button>`
+    const botoesCicloPomodoro = [botaoIniciarDescanso, botaoReiniciaConcentracao];
+
+    return botoesCicloPomodoro;
+}
+
+function iniciaDescanso() {
+
+    contadores[1].value = descanco.toString().padStart(2, '0');
+
+    console.log(contadores[1].value);
+
+    divMensagem.style.display = 'none';
+
+    iniciaContagem(contadores)
+}
+
+function iniciaConcentracao() {
+
+    contadores[1].value = concentracao.toString().padStart(2, '0');
+
+    console.log(contadores[1].value);
+
+    divMensagem.style.display = 'none';
+
+    iniciaContagem(contadores);
 }

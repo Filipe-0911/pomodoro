@@ -33,6 +33,9 @@
     font-family: var(--font-principal);
     
 }
+.titulo_texto {
+    text-align: center;
+}
 .apresentacao {
     display: flex;
     flex-direction: column;
@@ -144,7 +147,7 @@ input {
 .topo {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     margin-right: 0 ;
     
 }
@@ -156,13 +159,10 @@ input {
     cursor: pointer;
     font-weight: 700;
     border: 1px solid black;
-    border-radius: 4px;
-}
-
-.titulo-mensagem {
-    margin:0 42%;
     
 }
+
+
 .baixo {
     display: flex;
     justify-content: center;
@@ -171,6 +171,33 @@ input {
 }
 #mensagem {
     text-align: center;
+}
+
+.titulo-mensagem {
+    background-color: blue;
+    width: 100%;
+    color:white;
+    text-align: center;
+    
+}
+
+.baixo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 50%;
+}
+.botaoDescanso, .botaoConcentracao {
+    width: 40%;
+    text-align: center;
+    background-color: var(--cor-botao-fechar);
+    color: red;
+}
+.local-botao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width:415px) {
@@ -187,10 +214,6 @@ input {
     .apresentacao {
         width: 80%;
     }
-    .titulo_texto {
-        text-align: center;
-    }
-
     .exemplo1, .exemplo2 {
         padding: 0.3em;
     }
@@ -199,8 +222,5 @@ input {
         width: 70%;
     }
 
-    .titulo-mensagem {
-        margin:0 33.3% 0 45%;
-        
-    }
+
 }

@@ -95,7 +95,7 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
-    
+
     botoes.forEach(elemento => {
         //console.log(elemento.dataset.botao)
 
@@ -132,11 +132,11 @@ function iniciaContagem(horasMinutosSegundos) {
                     segundos = 59;
 
                 } else {
-                    
+
                     audio.play();
                     clearInterval(cronometroInterval);
                     exibeMensagem('Tempo esgotado.', criaBotaoDescanso());
-                    
+
                 }
             }
         }
@@ -153,8 +153,8 @@ function iniciaContagem(horasMinutosSegundos) {
 function exibeMensagem(mensagem, botaoParaAdicionar) {
 
     divMensagem.style.display = 'block';
-    mensagemAExibir.innerHTML = mensagem;  
-    
+    mensagemAExibir.innerHTML = mensagem;
+
     fecharMensagem.addEventListener(`click`, () => {
         divMensagem.style.display = 'none';
 
@@ -167,7 +167,7 @@ function exibeMensagem(mensagem, botaoParaAdicionar) {
                 case `subtrai`: elemento.style.display = 'block';
                     break;
             }
-            
+
         });
 
         doisPontos.forEach(elemento => {
@@ -175,18 +175,21 @@ function exibeMensagem(mensagem, botaoParaAdicionar) {
         });
 
     })
-    
+
     if (botaoParaAdicionar) {
 
-        if(elementoBaixoCaixaMsg.children.length == 0) {
+        if (elementoBaixoCaixaMsg.children.length == 0) {
 
             elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
-            
+
         } else {
-            
+
             if (elementoBaixoCaixaMsg.children[0].className == 'botaoDescanso') {
+
                 elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[1];
+
             } else {
+                
                 elementoBaixoCaixaMsg.innerHTML = botaoParaAdicionar[0];
             }
         }
@@ -201,12 +204,12 @@ exemplos.forEach(elemento => {
     elemento.addEventListener('click', () => {
         switch (elemento.innerText) {
             case '25/5': contadores[1].value = 25;
-            concentracao = 25;
-            descanco = 5;
+                concentracao = 25;
+                descanco = 5;
                 break;
             case '50/10': contadores[1].value = 50;
-            concentracao = 50;
-            descanco = 10;
+                concentracao = 50;
+                descanco = 10;
                 break;
         }
     });
@@ -241,7 +244,7 @@ function paraContagem(cronometroInterval) {
 
 }
 
-function criaBotaoDescanso () {
+function criaBotaoDescanso() {
 
     const botaoIniciarDescanso = `<button class="botaoDescanso" onclick="iniciaDescanso()">Iniciar Descanso</button>`
     const botaoReiniciaConcentracao = `<button class="botaoConcentracao" onclick="iniciaConcentracao()">Iniciar Concentracao</button>`
@@ -250,8 +253,8 @@ function criaBotaoDescanso () {
     return botoesCicloPomodoro;
 }
 
-function iniciaDescanso () {
-    
+function iniciaDescanso() {
+
     contadores[1].value = descanco.toString().padStart(2, '0');
 
     console.log(contadores[1].value);
@@ -261,7 +264,7 @@ function iniciaDescanso () {
     iniciaContagem(contadores)
 }
 
-function iniciaConcentracao () {
+function iniciaConcentracao() {
 
     contadores[1].value = concentracao.toString().padStart(2, '0');
 

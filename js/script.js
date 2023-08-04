@@ -242,7 +242,7 @@ function paraContagem(cronometroInterval) {
 
         elementoBaixoCaixaMsg.innerHTML = '';
 
-        loFi.volume = 0.2;
+        loFi.pause();
 
         return exibeMensagem(mensagem);
 

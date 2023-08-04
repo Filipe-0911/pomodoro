@@ -14,7 +14,10 @@
 }
 
 .corpo {
-    background-image: url('../img/bg.jpg');
+    background-image: url('../img/netuno.png');
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: top;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -225,9 +228,18 @@ input {
         --bg-exemplos-hover: rgb(61, 143, 116);
         --bg-exemplos-hover-shadow: rgba(61, 143, 116, 0.9);
     }
+    .apresentacao {
+        border: 1px solid var(--cor-fonte);
+    }
     .corpo {
+        margin-top: 6em;
         background-color: var(--cor-fonte);
-        background-image: none;
+        background-repeat: repeat;
+        background-position: top;
+        background-image: url('../img/bg2.jpg');
+    }
+    .exemplos_titulo {
+        color: var(--cor-fonte);
     }
     .apresentacao {
         width: 80%;

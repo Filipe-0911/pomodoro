@@ -42,11 +42,11 @@
     align-items: center;
     justify-content: center;
     gap: 5em;
-    width: 60%;
+    width: 400px;
     margin-bottom: 5em;
     border: 1px solid var(--bg-color);
     box-shadow: 10px 10px 10px 10px var(--cor-box-shadow);
-    border-radius: 10px;
+    border-radius: 70px;
     padding: 2em 0;
     
 }
@@ -202,8 +202,8 @@ input {
     :root {
         --bg-color: aquamarine;
         --font-principal: 'Roboto', sans-serif;
-        --letras-destaque: 1.5em;
-        --letras-sem-destaque: 2em;
+        --letras-destaque: 1em;
+        --letras-sem-destaque: 1.5em;
         --cor-botao-fechar: rgba(250, 255, 254);
         --cor-box-shadow: rgba(0, 0, 0, 0.7);
         --bg-exemplos-hover: rgb(61, 143, 116);
@@ -211,6 +211,7 @@ input {
     }
     .apresentacao {
         width: 80%;
+        gap: 1em;
     }
     .exemplo1, .exemplo2 {
         padding: 0.3em;
@@ -219,6 +220,9 @@ input {
     #div_mensagem {
         width: 70%;
     }
-
+    #numeros {
+        width: 40px;
+        padding: 0;
+    }
 
 }

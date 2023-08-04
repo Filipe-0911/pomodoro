@@ -8,6 +8,7 @@ var exemplos = document.querySelectorAll('[data-exemplos]');
 const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 var concentracao;
 var descanco;
+const loFi = new Audio('sound/lofi.mp3');
 const audio = new Audio('sound/alarme.mp3');
 
 
@@ -89,6 +90,9 @@ function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
     var segundos = parseInt(horasMinutosSegundos[2].value);
+    loFi.loop = true;
+    loFi.play();
+    loFi.volume = 1;
 
     botoes.forEach(elemento => {
 
@@ -127,9 +131,11 @@ function iniciaContagem(horasMinutosSegundos) {
                     segundos = 59;
 
                 } else {
+                    loFi.loop = false;
+                    loFi.volume = 0.2;
                     audio.loop = true;
                     audio.play();                   
-                    
+
                     clearInterval(cronometroInterval);
                     exibeMensagem('Tempo esgotado.', criaBotaoDescanso());
 
@@ -141,7 +147,7 @@ function iniciaContagem(horasMinutosSegundos) {
         horasMinutosSegundos[1].value = minutos.toString().padStart(2, '0');
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
-    }, 1000);
+    }, 1);
 
 }
 

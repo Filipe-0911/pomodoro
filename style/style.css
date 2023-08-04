@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&family=Rubik:wght@300;400;700&display=swap');
 
 :root {
-    --bg-color: aquamarine;
+    --bg-color: #038C3E;
+    --cor-fonte: #034159;
+    --cor-numeros: #0CF25D;
     --font-principal: 'Roboto', sans-serif;
     --letras-destaque: 2em;
     --letras-sem-destaque:3em;
@@ -12,7 +14,7 @@
 }
 
 .corpo {
-    background-color: var(--bg-color);
+    background-image: url('../img/bg.jpg');
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -35,6 +37,7 @@
 }
 .titulo_texto {
     text-align: center;
+    color: var(--cor-numeros);
 }
 .apresentacao {
     display: flex;
@@ -75,11 +78,14 @@ input {
     width: 53px;
     display: inline-flex;
     text-align: center;
+    /* color: var(--cor-numeros); */
+    color: var(--cor-numeros);
 }
 .material-icons {
     font-size: 3em;
     cursor: pointer;
     transition: 1s;
+    color: var(--cor-numeros);
 }
 .rodape {
     display: flex;
@@ -102,13 +108,17 @@ input {
     display: flex;
     gap: 6em;
     margin-top: 3em;
-    width: 60%;
+    width: 100%;
+    height: 100px;
+    align-items: center;
     justify-content: center;
 
 }
 
 .exemplos_titulo {
     font-size: var(--letras-destaque);
+    color: var(--cor-numeros);
+    font-weight: 700;
 }
 
 .exemplos_pomodoro {
@@ -116,19 +126,24 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    color: var(--cor-numeros);
+    
 }
 .exemplo1:hover, .exemplo2:hover {
-    border: 1px solid var(--bg-exemplos-hover);
-    background-color: var(--bg-exemplos-hover);
-    box-shadow: 5px 5px 10px 5px var(--cor-box-shadow);
+    border: 1px solid var(--cor-fonte);
+    background-color: var(--cor-fonte);
+    box-shadow: 10px 10px 10px 10px var(--cor-box-shadow);
+    color: var(--cor-numeros);
+    padding: 2px;
     transition: 1s;
 }
 .exemplo1, .exemplo2 {
     font-size: var(--letras-sem-destaque);
-    border: 1px solid var(--bg-color);
+    border: 1px solid var(--cor-fonte);
     box-shadow: 5px 5px 5px 5px var(--cor-box-shadow);
     border-radius: 10px;
+    cursor: pointer;
+    background-color: var(--cor-fonte);
 }
 
 #div_mensagem {
@@ -174,7 +189,6 @@ input {
 .titulo-mensagem {
     background-color: blue;
     width: 100%;
-    color:white;
     text-align: center;
     
 }
@@ -200,7 +214,9 @@ input {
 
 @media screen and (max-width:415px) {
     :root {
-        --bg-color: aquamarine;
+        --bg-color: #038C3E;
+        --cor-fonte: #034159;
+        --cor-numeros: #0CF25D;
         --font-principal: 'Roboto', sans-serif;
         --letras-destaque: 1em;
         --letras-sem-destaque: 1.5em;
@@ -208,6 +224,10 @@ input {
         --cor-box-shadow: rgba(0, 0, 0, 0.7);
         --bg-exemplos-hover: rgb(61, 143, 116);
         --bg-exemplos-hover-shadow: rgba(61, 143, 116, 0.9);
+    }
+    .corpo {
+        background-color: var(--cor-fonte);
+        background-image: none;
     }
     .apresentacao {
         width: 80%;

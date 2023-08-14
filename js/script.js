@@ -296,9 +296,9 @@ botaoVolume.addEventListener('click', () => {
 
 })
 
-aumentaVolume.addEventListener('click', () => {
+aumentaVolume.addEventListener('input', () => {
     var valorVolume = (aumentaVolume.value) / 100;
-    console.log(valorVolume);
+    //console.log(valorVolume);
     loFi.volume = valorVolume;
     volumeAlterado = valorVolume;
 

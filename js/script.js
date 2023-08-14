@@ -6,9 +6,12 @@ var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
 const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
+var botaoVolume = document.querySelector('[data-botao="volume"]');
+var aumentaVolume = document.querySelector('[data-range-volume]');
 var concentracao;
 var descanco;
-const loFi = new Audio('sound/lofi.mp3');
+var volumeAlterado = 1;
+const loFi = new Audio('sound/lofi2.mp3');
 const audio = new Audio('sound/alarme.mp3');
 
 
@@ -93,6 +96,10 @@ function iniciaContagem(horasMinutosSegundos) {
     loFi.loop = true;
     loFi.play();
     loFi.volume = 1;
+    
+    botaoVolume.id = 'botaoVolumeOpacity';
+    aumentaVolume.id = 'barraVolumeOpacity';
+
 
     botoes.forEach(elemento => {
 
@@ -272,3 +279,24 @@ function iniciaConcentracao() {
     iniciaContagem(contadores);
 
 }
+
+botaoVolume.addEventListener('click', () => {
+
+    switch(botaoVolume.innerText) {
+        case 'volume_up': loFi.volume = 0;
+        botaoVolume.innerText = 'volume_off';
+        break;
+        case 'volume_off': loFi.volume = volumeAlterado;
+        botaoVolume.innerText = 'volume_up';
+        break;
+    }
+
+})
+
+aumentaVolume.addEventListener('click', () => {
+    var valorVolume = (aumentaVolume.value) / 100;
+    console.log(valorVolume);
+    loFi.volume = valorVolume;
+    volumeAlterado = valorVolume;
+
+})

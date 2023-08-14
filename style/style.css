@@ -52,7 +52,7 @@
     margin-bottom: 5em;
     border: 1px solid var(--bg-color);
     box-shadow: 10px 10px 10px 10px var(--cor-box-shadow);
-    border-radius: 70px;
+    border-radius: 300px;
     padding: 2em 0;
     
 }
@@ -97,6 +97,16 @@ input {
     width: 60%;
     gap: 5em;
     
+}
+.local_botoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.volume {
+    width: 100%;
 }
 
 .rodape_botoes {
@@ -213,6 +223,18 @@ input {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+#botaoVolume, #barraVolume {
+    display: none;
+    opacity: 0;
+    transition: 1s;
+}
+
+#botaoVolumeOpacity, #barraVolumeOpacity {
+    display: block;
+    opacity: 1;
+    transition: 1s;
 }
 
 @media screen and (max-width:415px) {

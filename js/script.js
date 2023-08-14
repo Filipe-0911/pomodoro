@@ -8,9 +8,10 @@ var exemplos = document.querySelectorAll('[data-exemplos]');
 const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 var botaoVolume = document.querySelector('[data-botao="volume"]');
 var aumentaVolume = document.querySelector('[data-range-volume]');
+var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
-var volumeAlterado = 1;
+var volumeAlterado = 0.5;
 const loFi = new Audio('sound/lofi2.mp3');
 const audio = new Audio('sound/alarme.mp3');
 
@@ -95,11 +96,11 @@ function iniciaContagem(horasMinutosSegundos) {
     var segundos = parseInt(horasMinutosSegundos[2].value);
     loFi.loop = true;
     loFi.play();
-    loFi.volume = 1;
+    loFi.volume = volumeAlterado;
     
     botaoVolume.id = 'botaoVolumeOpacity';
     aumentaVolume.id = 'barraVolumeOpacity';
-
+    rodape.style.display = "none"
 
     botoes.forEach(elemento => {
 
@@ -250,6 +251,8 @@ function paraContagem(cronometroInterval) {
         elementoBaixoCaixaMsg.innerHTML = '';
 
         loFi.pause();
+
+        rodape.style.display = "block";
 
         return exibeMensagem(mensagem);
 

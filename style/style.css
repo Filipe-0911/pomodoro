@@ -23,6 +23,7 @@
     flex-direction: column;
     font-family: var(--font-principal);
     user-select: none;
+    color: var(--cor-numeros);
     
     
 }
@@ -145,9 +146,8 @@ input {
 .exemplo1:hover, .exemplo2:hover {
     border: 1px solid var(--cor-fonte);
     background-color: var(--cor-fonte);
-    box-shadow: 10px 10px 10px 10px var(--cor-box-shadow);
+    box-shadow: 20px 20px 20px 20px var(--cor-box-shadow);
     color: var(--cor-numeros);
-    padding: 2px;
     transition: 1s;
 }
 .exemplo1, .exemplo2 {

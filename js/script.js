@@ -15,6 +15,8 @@ var volumeAlterado = 1;
 const loFi = new Audio('sound/lofi2.mp3');
 const audio = new Audio('sound/alarme.mp3');
 
+var tempoTimer = 1000;
+
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -100,6 +102,7 @@ function iniciaContagem(horasMinutosSegundos) {
     
     botaoVolume.style.display = "block";
     aumentaVolume.style.display = "block";
+    botoes[7].style.display = "block";
     rodape.style.display = "none"
 
     botoes.forEach(elemento => {
@@ -155,7 +158,7 @@ function iniciaContagem(horasMinutosSegundos) {
         horasMinutosSegundos[1].value = minutos.toString().padStart(2, '0');
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
-    }, 1000);
+    }, tempoTimer);
 
 }
 
@@ -249,6 +252,7 @@ function paraContagem(cronometroInterval) {
         })
 
         elementoBaixoCaixaMsg.innerHTML = '';
+        botoes[7].style.display = "block";
 
         loFi.pause();
 
@@ -274,6 +278,7 @@ function iniciaDescanso() {
     divMensagem.style.display = 'none';
     audio.loop = false;
     iniciaContagem(contadores);
+    botoes[7].style.display = 'none';
 
 }
 

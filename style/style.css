@@ -169,6 +169,7 @@ input {
     height: 20%;
     color: black;
     font-weight: 700;
+    box-sizing: border-box;
 }
 
 .topo {
@@ -214,11 +215,18 @@ input {
     justify-content: space-between;
     height: 50%;
 }
-.botaoDescanso, .botaoConcentracao {
-    width: 40%;
+.botaoConcentracao {
+    width: 72%;
     text-align: center;
     background-color: var(--cor-botao-fechar);
     color: red;
+}
+
+.botaoDescanso {
+    width: 60%;
+    text-align: center;
+    background-color: var(--cor-botao-fechar);
+    color: green;
 }
 .local-botao {
     width: 100%;

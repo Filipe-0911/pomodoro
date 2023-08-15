@@ -167,7 +167,8 @@ input {
     background-color: var(--cor-botao-fechar);
     position: absolute;
     height: 20%;
-    
+    color: black;
+    font-weight: 700;
 }
 
 .topo {

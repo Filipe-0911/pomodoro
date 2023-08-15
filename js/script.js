@@ -11,7 +11,7 @@ var aumentaVolume = document.querySelector('[data-range-volume]');
 var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
-var volumeAlterado = 0.5;
+var volumeAlterado = 1;
 const loFi = new Audio('sound/lofi2.mp3');
 const audio = new Audio('sound/alarme.mp3');
 

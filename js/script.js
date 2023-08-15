@@ -253,6 +253,8 @@ function paraContagem(cronometroInterval) {
 
         elementoBaixoCaixaMsg.innerHTML = '';
         botoes[7].style.display = "block";
+        descanco = '';
+        concentracao = '';
 
         loFi.pause();
 

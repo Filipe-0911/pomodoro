@@ -98,8 +98,8 @@ function iniciaContagem(horasMinutosSegundos) {
     loFi.play();
     loFi.volume = volumeAlterado;
     
-    botaoVolume.id = 'botaoVolumeOpacity';
-    aumentaVolume.id = 'barraVolumeOpacity';
+    botaoVolume.style.display = "block";
+    aumentaVolume.style.display = "block";
     rodape.style.display = "none"
 
     botoes.forEach(elemento => {
@@ -253,6 +253,8 @@ function paraContagem(cronometroInterval) {
         loFi.pause();
 
         rodape.style.display = "block";
+        botaoVolume.style.display = "none";
+        aumentaVolume.style.display = "none";
 
         return exibeMensagem(mensagem);
 

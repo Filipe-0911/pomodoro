@@ -227,12 +227,6 @@ input {
 
 #botaoVolume, #barraVolume {
     display: none;
-    opacity: 0;
-    transition: 1s;
-}
-
-#botaoVolumeOpacity, #barraVolumeOpacity {
-    display: block;
     opacity: 1;
     transition: 1s;
 }

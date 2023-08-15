@@ -278,17 +278,9 @@ function iniciaConcentracao() {
 botaoVolume.addEventListener('click', () => {
 
     switch(botaoVolume.innerText) {
-        case 'volume_up': loFi.volume = 0;
-        aumentaVolume.value = 0;
-        botaoVolume.innerText = 'volume_off';
-        botaoVolume.style.color = "red";
-        aumentaVolume.style.display = "none";
+        case 'volume_up': mutaAudio();
         break;
-        case 'volume_off': loFi.volume = volumeAlterado;
-        aumentaVolume.style.display = "block";
-        aumentaVolume.value = volumeAlterado * 100;
-        botaoVolume.innerText = 'volume_up';
-        botaoVolume.style.color = "#0CF25D";
+        case 'volume_off': desmutaAudio();
         break;
     }
 
@@ -299,3 +291,20 @@ aumentaVolume.addEventListener('input', () => {
     volumeAlterado = valorVolume;
 
 })
+
+function mutaAudio() {
+    loFi.volume = 0;
+    aumentaVolume.value = 0;
+    botaoVolume.innerText = 'volume_off';
+    botaoVolume.style.color = "red";
+    aumentaVolume.style.display = "none";
+
+}
+function desmutaAudio () {
+    loFi.volume = volumeAlterado;
+    aumentaVolume.style.display = "block";
+    aumentaVolume.value = volumeAlterado * 100;
+    botaoVolume.innerText = 'volume_up';
+    botaoVolume.style.color = "#0CF25D";
+    
+}

@@ -281,10 +281,12 @@ botaoVolume.addEventListener('click', () => {
         case 'volume_up': loFi.volume = 0;
         aumentaVolume.value = 0;
         botaoVolume.innerText = 'volume_off';
+        botaoVolume.style.color = "red";
         break;
         case 'volume_off': loFi.volume = volumeAlterado;
         aumentaVolume.value = volumeAlterado * 100;
         botaoVolume.innerText = 'volume_up';
+        botaoVolume.style.color = "#0CF25D";
         break;
     }
 

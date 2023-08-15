@@ -238,6 +238,7 @@ input {
     display: none;
     opacity: 1;
     transition: 1s;
+    /* color: red; */
 }
 
 @media screen and (max-width:415px) {

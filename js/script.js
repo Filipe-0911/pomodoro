@@ -43,7 +43,6 @@ function adicionaTempo(div) {
             break;
         case `segundos`: adicionaSegundos(numeros, div.classList[0]);
             break;
-
     }
 
 }

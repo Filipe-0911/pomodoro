@@ -1,26 +1,23 @@
-var botoes = document.querySelectorAll(`[data-botao]`);
 const contadores = document.querySelectorAll(`[data-contador]`);
+const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
+const loFi = new Audio('sound/lofi2.mp3');
+const audio = new Audio('sound/alarme.mp3');
+var botoes = document.querySelectorAll(`[data-botao]`);
 var divMensagem = document.getElementById(`div_mensagem`);
 var mensagemAExibir = document.getElementById(`mensagem`);
 var fecharMensagem = document.getElementById(`fechar`);
 var doisPontos = document.querySelectorAll(`.dois_pontos`);
 var exemplos = document.querySelectorAll('[data-exemplos]');
-const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 var botaoVolume = document.querySelector('[data-botao="volume"]');
 var aumentaVolume = document.querySelector('[data-range-volume]');
 var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
 var volumeAlterado = 1;
-const loFi = new Audio('sound/lofi2.mp3');
-const audio = new Audio('sound/alarme.mp3');
-
 var tempoTimer = 1000;
-
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
-
     switch (elemento.innerText) {
         case 'add': adicionaTempo(divDoBotao);
             break;
@@ -28,11 +25,9 @@ botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
             break;
         case `play_arrow`: iniciaContagem(contadores);
             break;
-
     }
 
 }))
-
 function adicionaTempo(div) {
     var numeros = div.querySelector('#numeros');
 
@@ -43,11 +38,9 @@ function adicionaTempo(div) {
             break;
         case `segundos`: adicionaSegundos(numeros, div.classList[0]);
             break;
-
     }
 
 }
-
 function reduzTempo(div) {
     var numeros = div.querySelector('#numeros');
 
@@ -56,10 +49,9 @@ function reduzTempo(div) {
 
     } else {
         exibeMensagem(`Você não pode inserir um valor negativo`);
-
     }
-}
 
+}
 function adicionaHoras(numeros, div) {
     if (numeros.value >= 10 && div == `horas`) {
         exibeMensagem(`Você não pode definir mais que 10 ${div.classList}`);
@@ -69,7 +61,6 @@ function adicionaHoras(numeros, div) {
     }
 
 }
-
 function adicionaMinutos(numeros, div) {
     if (numeros.value >= 59 && div == `minutos`) {
         numeros.value = (0).toString().padStart(2, '0');
@@ -80,7 +71,6 @@ function adicionaMinutos(numeros, div) {
     }
 
 }
-
 function adicionaSegundos(numeros, div) {
     if (numeros.value >= 59 && div == `segundos`) {
         numeros.value = (0).toString().padStart(2, '0');
@@ -91,7 +81,6 @@ function adicionaSegundos(numeros, div) {
     }
 
 }
-
 function iniciaContagem(horasMinutosSegundos) {
     var horas = parseInt(horasMinutosSegundos[0].value);
     var minutos = parseInt(horasMinutosSegundos[1].value);
@@ -161,7 +150,6 @@ function iniciaContagem(horasMinutosSegundos) {
     }, tempoTimer);
 
 }
-
 function exibeMensagem(mensagem, botaoParaAdicionar) {
 
     divMensagem.style.display = 'block';
@@ -208,7 +196,6 @@ function exibeMensagem(mensagem, botaoParaAdicionar) {
     }
 
 }
-
 exemplos.forEach(elemento => {
     elemento.addEventListener('click', () => {
 
@@ -226,7 +213,6 @@ exemplos.forEach(elemento => {
     });
 
 })
-
 function paraContagem(cronometroInterval) {
     var botaoStop = botoes[8];
     var botaoPause = botoes[7];
@@ -239,7 +225,7 @@ function paraContagem(cronometroInterval) {
 
         elementoBaixoCaixaMsg.innerHTML = '';
 
-        loFi.volume = 0.2;
+        loFi.volume = volumeAlterado;
 
         return exibeMensagem(mensagem);
 
@@ -267,14 +253,13 @@ function paraContagem(cronometroInterval) {
     })
 
 }
-
 function criaBotaoDescanso() {
     const botaoIniciarDescanso = `<button class="botaoDescanso" onclick="iniciaDescanso()">Iniciar Descanso</button>`
     const botaoReiniciaConcentracao = `<button class="botaoConcentracao" onclick="iniciaConcentracao()">Iniciar Concentracao</button>`
     const botoesCicloPomodoro = [botaoIniciarDescanso, botaoReiniciaConcentracao];
     return botoesCicloPomodoro;
-}
 
+}
 function iniciaDescanso() {
     contadores[1].value = descanco.toString().padStart(2, '0');
     divMensagem.style.display = 'none';
@@ -283,7 +268,6 @@ function iniciaDescanso() {
     botoes[7].style.display = 'none';
 
 }
-
 function iniciaConcentracao() {
     contadores[1].value = concentracao.toString().padStart(2, '0');
     divMensagem.style.display = 'none';
@@ -291,23 +275,22 @@ function iniciaConcentracao() {
     iniciaContagem(contadores);
 
 }
-
 botaoVolume.addEventListener('click', () => {
 
     switch(botaoVolume.innerText) {
         case 'volume_up': loFi.volume = 0;
+        aumentaVolume.value = 0;
         botaoVolume.innerText = 'volume_off';
         break;
         case 'volume_off': loFi.volume = volumeAlterado;
+        aumentaVolume.value = volumeAlterado * 100;
         botaoVolume.innerText = 'volume_up';
         break;
     }
 
 })
-
 aumentaVolume.addEventListener('input', () => {
     var valorVolume = (aumentaVolume.value) / 100;
-    //console.log(valorVolume);
     loFi.volume = valorVolume;
     volumeAlterado = valorVolume;
 

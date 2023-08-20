@@ -14,7 +14,7 @@ var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
 var volumeAlterado = 1;
-var tempoTimer = 1000;
+var tempoTimer = 1;
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -90,9 +90,12 @@ function iniciaContagem(horasMinutosSegundos) {
     loFi.volume = volumeAlterado;
     
     botaoVolume.style.display = "block";
-    aumentaVolume.style.display = "block";
     botoes[7].style.display = "block";
-    rodape.style.display = "none"
+    rodape.style.display = "none";
+
+    if (loFi.volume > 0) {
+        aumentaVolume.style.display = "block";
+    }
 
     botoes.forEach(elemento => {
 
@@ -132,7 +135,6 @@ function iniciaContagem(horasMinutosSegundos) {
 
                 } else {
                     loFi.loop = false;
-                    loFi.volume = 0.2;
                     audio.loop = true;
                     audio.play();                   
 
@@ -267,12 +269,16 @@ function iniciaDescanso() {
     iniciaContagem(contadores);
     botoes[7].style.display = 'none';
 
+    // console.log(volumeAlterado)
+
 }
 function iniciaConcentracao() {
     contadores[1].value = concentracao.toString().padStart(2, '0');
     divMensagem.style.display = 'none';
     audio.loop = false;
     iniciaContagem(contadores);
+
+    // console.log(volumeAlterado)
 
 }
 botaoVolume.addEventListener('click', () => {
@@ -295,16 +301,21 @@ aumentaVolume.addEventListener('input', () => {
 function mutaAudio() {
     loFi.volume = 0;
     aumentaVolume.value = 0;
+    volumeAlterado = 0;
     botaoVolume.innerText = 'volume_off';
     botaoVolume.style.color = "red";
     aumentaVolume.style.display = "none";
 
 }
 function desmutaAudio () {
+    if (loFi.volume == 0) {
+        volumeAlterado = 0.1
+    }
+
     loFi.volume = volumeAlterado;
-    aumentaVolume.style.display = "block";
     aumentaVolume.value = volumeAlterado * 100;
+    aumentaVolume.style.display = "block";    
     botaoVolume.innerText = 'volume_up';
     botaoVolume.style.color = "#0CF25D";
-    
+
 }

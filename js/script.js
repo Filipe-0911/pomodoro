@@ -319,3 +319,25 @@ function desmutaAudio () {
     botaoVolume.style.color = "#0CF25D";
 
 }
+
+
+//fazer calculo da distancia de onde foi clicado para o ponto inicial do alerta (superior esquerdo)
+
+divMensagem.addEventListener("dragstart", elemento => {
+    
+    console.log(`Este é o elemento X ${elemento.clientX}`)
+    console.log(`Este é o elemento Y ${elemento.clientY}`)
+
+    elemento.target.style.opacity = 0.01
+    elemento.target.style.cursor = "pointer"
+})
+
+divMensagem.addEventListener("dragend", elemento => {
+    
+    console.log(`Este é o elemento X ${elemento.clientX + 5}`)
+    console.log(`Este é o elemento Y ${elemento.clientY}`)
+
+    elemento.target.style.opacity = 1
+    elemento.target.style.top = `${elemento.clientY}px`
+    elemento.target.style.left = `${elemento.clientX}px`
+})

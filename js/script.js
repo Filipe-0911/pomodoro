@@ -206,7 +206,6 @@ exemplos.forEach(elemento => {
     elemento.addEventListener('click', () => {
 
         switch (elemento.innerText) {
-
             case '25/5': contadores[1].value = 25;
                 concentracao = 25;
                 descanco = 5;
@@ -215,8 +214,10 @@ exemplos.forEach(elemento => {
             case '50/10': contadores[1].value = 50;
                 concentracao = 50;
                 descanco = 10;
+                pegaHoraInicio();
                 break;
         }
+
     });
 
 })

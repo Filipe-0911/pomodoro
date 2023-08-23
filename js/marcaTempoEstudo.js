@@ -1,22 +1,43 @@
-function pegaHoraInicio () {
-    const inicioEstudo = new Date();
-    console.log(inicioEstudo)
+var inicioEstudo;
+var terminoEstudo;
 
-    return inicioEstudo;
+
+function pegaHoraInicio () {
+    inicioEstudo = new Date();
+    // console.log(inicioEstudo)
+
+    return inicioEstudo
 }
 
 function pegaHoraFimEstudo() {
-    const terminoEstudo = new Date();
-    console.log(terminoEstudo)
+    terminoEstudo = new Date();
+    // console.log(terminoEstudo)
     
-    return terminoEstudo;
+    return terminoEstudo
 }
 
 function calculaTempoDeEstudo(dataTermino, dataInicio) {
+    var hr;
+    var min;
+    var sec;
 
-    const diferenca = dataTermino - dataInicio;
+    const qtdSegundos = Math.ceil((dataTermino.getTime() - dataInicio.getTime()) / 1000)
 
-    const resultadoHr = new Date(diferenca)
-    return resultadoHr
+    if(qtdSegundos > 60) {
+        sec = qtdSegundos % 60
+        min = parseInt(qtdSegundos / 60)
+        hr = 0
+    } else {
+        sec = qtdSegundos;
+        min = 0;
+    }
+    if (qtdSegundos > 3600) {
+        sec = qtdSegundos % 60
+        min = parseInt(qtdSegundos / 60)
+        hr = parseInt(qtdSegundos / 3600)
+    }
+    
+
+    return exibeMensagem(`Você estudou ${min}min e ${sec}seg.`)
 
 }

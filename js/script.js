@@ -14,7 +14,7 @@ var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
 var volumeAlterado = 1;
-var tempoTimer = 1;
+var tempoTimer = 1000;
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -210,7 +210,7 @@ exemplos.forEach(elemento => {
             case '25/5': contadores[1].value = 25;
                 concentracao = 25;
                 descanco = 5;
-                // pegaHoraInicio();
+                pegaHoraInicio();
                 break;
             case '50/10': contadores[1].value = 50;
                 concentracao = 50;
@@ -244,7 +244,7 @@ function paraContagem(cronometroInterval) {
             clearInterval(cronometroInterval);
         })
 
-        // pegaHoraFimEstudo();
+        pegaHoraFimEstudo();
         elementoBaixoCaixaMsg.innerHTML = '';
         botoes[7].style.display = "block";
         descanco = '';
@@ -256,7 +256,7 @@ function paraContagem(cronometroInterval) {
         botaoVolume.style.display = "none";
         aumentaVolume.style.display = "none";
 
-        return exibeMensagem(mensagem);
+        return calculaTempoDeEstudo(terminoEstudo, inicioEstudo);
 
     })
 

@@ -115,7 +115,7 @@ function iniciaContagem(horasMinutosSegundos) {
 
     const cronometroInterval = setInterval(() => {
 
-        paraContagem(cronometroInterval);
+        
 
         if (segundos > 0) {
             segundos--;
@@ -145,11 +145,15 @@ function iniciaContagem(horasMinutosSegundos) {
             }
         }
 
+        
+
         horasMinutosSegundos[0].value = horas.toString().padStart(2, '0');
         horasMinutosSegundos[1].value = minutos.toString().padStart(2, '0');
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
     }, tempoTimer);
+
+    paraContagem(cronometroInterval);
 
 }
 function exibeMensagem(mensagem, botaoParaAdicionar) {
@@ -206,6 +210,7 @@ exemplos.forEach(elemento => {
             case '25/5': contadores[1].value = 25;
                 concentracao = 25;
                 descanco = 5;
+                // pegaHoraInicio();
                 break;
             case '50/10': contadores[1].value = 50;
                 concentracao = 50;
@@ -239,6 +244,7 @@ function paraContagem(cronometroInterval) {
             clearInterval(cronometroInterval);
         })
 
+        // pegaHoraFimEstudo();
         elementoBaixoCaixaMsg.innerHTML = '';
         botoes[7].style.display = "block";
         descanco = '';

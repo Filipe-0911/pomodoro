@@ -14,7 +14,7 @@ var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
 var volumeAlterado = 1;
-var tempoTimer = 1;
+var tempoTimer = 1000;
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;

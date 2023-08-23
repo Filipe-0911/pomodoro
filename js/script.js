@@ -320,24 +320,23 @@ function desmutaAudio () {
 
 }
 
-
 //fazer calculo da distancia de onde foi clicado para o ponto inicial do alerta (superior esquerdo)
 
-divMensagem.addEventListener("dragstart", elemento => {
+divMensagem.addEventListener("dragstart", evento => {
     
-    console.log(`Este é o elemento X ${elemento.clientX}`)
-    console.log(`Este é o elemento Y ${elemento.clientY}`)
+    console.log(`Este é o valor do X ${evento.clientX}`)
+    console.log(`Este é o valor do Y ${evento.clientY}`)
 
-    elemento.target.style.opacity = 0.01
-    elemento.target.style.cursor = "pointer"
+    evento.target.style.opacity = 0.01
+    evento.target.style.cursor = "pointer"
+
+    console.log(evento.target.style.top)
 })
 
-divMensagem.addEventListener("dragend", elemento => {
-    
-    console.log(`Este é o elemento X ${elemento.clientX + 5}`)
-    console.log(`Este é o elemento Y ${elemento.clientY}`)
+divMensagem.addEventListener("dragend", evento => {  
+    evento.target.style.opacity = 1
+    evento.target.style.top = `${evento.pageY}px`;
+    evento.target.style.left = `${evento.pageX}px`;
 
-    elemento.target.style.opacity = 1
-    elemento.target.style.top = `${elemento.clientY}px`
-    elemento.target.style.left = `${elemento.clientX}px`
+    console.log(evento.target.pageY)
 })

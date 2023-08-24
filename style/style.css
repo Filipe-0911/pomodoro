@@ -66,12 +66,14 @@
 .horas, .minutos, .segundos {
     display: flex;
     align-items: center;
+    font-size: 1.71em;
         
 }
 
 .dois_pontos {
     display: none;
     font-size: var(--letras-destaque);
+    margin-bottom: 10px;
 }
 
 input {
@@ -162,14 +164,20 @@ input {
 #div_mensagem {
     display: none;
     width: 200px;
-    height: 150px;
+    height: 11em;
     align-items: center;
     box-shadow: 5px 5px 5px 5px var(--cor-box-shadow);
     background-color: var(--cor-botao-fechar);
     position: absolute;
     color: black;
     font-weight: 700;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
+    
+}
+
+#div_mensagem button {
+    height: 2.3em;
+    line-height: 1;
 }
 
 .topo {
@@ -188,6 +196,7 @@ input {
     font-weight: 700;
     border: 1px solid black;
     
+    
 }
 
 
@@ -205,6 +214,7 @@ input {
     background-color: blue;
     width: 100%;
     text-align: center;
+    height: 1.61em;
     
 }
 

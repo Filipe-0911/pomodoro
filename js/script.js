@@ -14,7 +14,7 @@ var rodape = document.querySelector('.rodape');
 var concentracao;
 var descanco;
 var volumeAlterado = 1;
-var tempoTimer = 1;
+var tempoTimer = 1000;
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
     const divDoBotao = elemento.parentNode;
@@ -115,7 +115,7 @@ function iniciaContagem(horasMinutosSegundos) {
 
     const cronometroInterval = setInterval(() => {
 
-        paraContagem(cronometroInterval);
+        
 
         if (segundos > 0) {
             segundos--;
@@ -145,11 +145,15 @@ function iniciaContagem(horasMinutosSegundos) {
             }
         }
 
+        
+
         horasMinutosSegundos[0].value = horas.toString().padStart(2, '0');
         horasMinutosSegundos[1].value = minutos.toString().padStart(2, '0');
         horasMinutosSegundos[2].value = segundos.toString().padStart(2, '0');
 
     }, tempoTimer);
+
+    paraContagem(cronometroInterval);
 
 }
 function exibeMensagem(mensagem, botaoParaAdicionar) {
@@ -202,16 +206,18 @@ exemplos.forEach(elemento => {
     elemento.addEventListener('click', () => {
 
         switch (elemento.innerText) {
-
             case '25/5': contadores[1].value = 25;
                 concentracao = 25;
                 descanco = 5;
+                pegaHoraInicio();
                 break;
             case '50/10': contadores[1].value = 50;
                 concentracao = 50;
                 descanco = 10;
+                pegaHoraInicio();
                 break;
         }
+
     });
 
 })
@@ -239,6 +245,7 @@ function paraContagem(cronometroInterval) {
             clearInterval(cronometroInterval);
         })
 
+        pegaHoraFimEstudo();
         elementoBaixoCaixaMsg.innerHTML = '';
         botoes[7].style.display = "block";
         descanco = '';
@@ -250,7 +257,7 @@ function paraContagem(cronometroInterval) {
         botaoVolume.style.display = "none";
         aumentaVolume.style.display = "none";
 
-        return exibeMensagem(mensagem);
+        return calculaTempoDeEstudo(terminoEstudo, inicioEstudo);
 
     })
 
@@ -320,24 +327,23 @@ function desmutaAudio () {
 
 }
 
-
 //fazer calculo da distancia de onde foi clicado para o ponto inicial do alerta (superior esquerdo)
 
-divMensagem.addEventListener("dragstart", elemento => {
+divMensagem.addEventListener("dragstart", evento => {
     
-    console.log(`Este é o elemento X ${elemento.clientX}`)
-    console.log(`Este é o elemento Y ${elemento.clientY}`)
+    console.log(`Este é o valor do X ${evento.clientX}`)
+    console.log(`Este é o valor do Y ${evento.clientY}`)
 
-    elemento.target.style.opacity = 0.01
-    elemento.target.style.cursor = "pointer"
+    evento.target.style.opacity = 0.01
+    evento.target.style.cursor = "pointer"
+
+    console.log(evento.target.style.top)
 })
 
-divMensagem.addEventListener("dragend", elemento => {
-    
-    console.log(`Este é o elemento X ${elemento.clientX + 5}`)
-    console.log(`Este é o elemento Y ${elemento.clientY}`)
+divMensagem.addEventListener("dragend", evento => {  
+    evento.target.style.opacity = 1
+    evento.target.style.top = `${evento.pageY}px`;
+    evento.target.style.left = `${evento.pageX}px`;
 
-    elemento.target.style.opacity = 1
-    elemento.target.style.top = `${elemento.clientY}px`
-    elemento.target.style.left = `${elemento.clientX}px`
+    console.log(evento.target.pageY)
 })

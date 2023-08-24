@@ -5,8 +5,8 @@
     --cor-fonte: #034159;
     --cor-numeros: #0CF25D;
     --font-principal: 'Roboto', sans-serif;
-    --letras-destaque: 2em;
-    --letras-sem-destaque:3em;
+    --letras-destaque: 1.5em;
+    --letras-sem-destaque:1.2em;
     --cor-botao-fechar: rgba(250, 255, 254);
     --cor-box-shadow: rgba(0, 0, 0, 0.7);
     --bg-exemplos-hover: rgb(61, 143, 116);
@@ -42,6 +42,7 @@
 .titulo_texto {
     text-align: center;
     color: var(--cor-numeros);
+    font-size: var(--letras-destaque);
 }
 .apresentacao {
     display: flex;
@@ -51,7 +52,7 @@
     gap: 5em;
     width: 400px;
     margin-bottom: 5em;
-    border: 1px solid var(--bg-color);
+    border: 1px solid rgba(100, 100, 100, 0.2);
     box-shadow: 10px 10px 10px 10px var(--cor-box-shadow);
     border-radius: 300px;
     padding: 2em 0;
@@ -153,10 +154,11 @@ input {
     transition: 1s;
 }
 .exemplo1, .exemplo2 {
-    font-size: var(--letras-sem-destaque);
+    font-size: var(--letras-destaque);
+    padding: 0.5em;
     border: 1px solid var(--cor-fonte);
     box-shadow: 5px 5px 5px 5px var(--cor-box-shadow);
-    border-radius: 10px;
+    border-radius: 2em;
     cursor: pointer;
     background-color: var(--cor-fonte);
 }

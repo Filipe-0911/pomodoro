@@ -259,8 +259,8 @@ input {
         --cor-fonte: #034159;
         --cor-numeros: #0CF25D;
         --font-principal: 'Roboto', sans-serif;
-        --letras-destaque: 1em;
-        --letras-sem-destaque: 1.5em;
+        --letras-destaque: 0.8em;
+        --letras-sem-destaque: 0.5em;
         --cor-botao-fechar: rgba(250, 255, 254);
         --cor-box-shadow: rgba(0, 0, 0, 0.7);
         --bg-exemplos-hover: rgb(61, 143, 116);
@@ -284,7 +284,7 @@ input {
         gap: 1em;
     }
     .exemplo1, .exemplo2 {
-        padding: 0.3em;
+        padding: 1em;
     }
 
     #div_mensagem {
@@ -293,6 +293,10 @@ input {
     #numeros {
         width: 40px;
         padding: 0;
+        font-size: var(--letras-destaque);
+    }
+    .dois_pontos {
+        margin-bottom: 0.5px;
     }
 
 }

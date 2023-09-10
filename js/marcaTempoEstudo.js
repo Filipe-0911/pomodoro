@@ -23,21 +23,21 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
 
     const qtdSegundos = Math.ceil((dataTermino.getTime() - dataInicio.getTime()) / 1000)
 
-    if(qtdSegundos > 60) {
-        sec = qtdSegundos % 60
-        min = parseInt(qtdSegundos / 60)
-        hr = 0
-    } else {
-        sec = qtdSegundos;
-        min = 0;
-    }
     if (qtdSegundos > 3600) {
         sec = qtdSegundos % 60
         min = parseInt(qtdSegundos / 60)
         hr = parseInt(qtdSegundos / 3600)
-    }
-    
+    } else {
+        if (qtdSegundos > 60) {
+            sec = qtdSegundos % 60
+            min = parseInt(qtdSegundos / 60)
+            hr = 0
+        } else {
+            sec = qtdSegundos;
+            min = 0;
+        }
+    }    
 
     return exibeMensagem(`Você estudou ${min}min e ${sec}seg.`)
 
-}
+} ///14:28

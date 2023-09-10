@@ -29,7 +29,7 @@ botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
 
 }))
 function adicionaTempo(div) {
-    var numeros = div.querySelector('#numeros');
+    var numeros = div.querySelector("[data-numeros]")
 
     switch (div.classList[0]) {
         case `horas`: adicionaHoras(numeros, div.classList[0]);

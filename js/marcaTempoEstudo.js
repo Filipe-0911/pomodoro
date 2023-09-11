@@ -27,6 +27,8 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
         hr = parseInt(qtdSegundos / 3600)
         min = parseInt((qtdSegundos / 60) - 60)
         sec = qtdSegundos % 60
+
+        
     } else {
         if (qtdSegundos > 60) {
             sec = qtdSegundos % 60
@@ -36,6 +38,8 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
             sec = qtdSegundos;
             min = 0;
         }
+        hr = 0
+        
     }    
 
     return exibeMensagem(`Você estudou ${hr}hr,${min}min e ${sec}seg.`)

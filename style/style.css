@@ -11,6 +11,8 @@
     --cor-box-shadow: rgba(0, 0, 0, 0.7);
     --bg-exemplos-hover: rgb(61, 143, 116);
     --bg-exemplos-hover-shadow: rgba(61, 143, 116, 0.9);
+    --cor-fonte-alerta: #FFFFFF;
+    --cor-bg-alerta: rgb(34, 34, 241);
 }
 
 .corpo {
@@ -215,10 +217,11 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: blue;
+    background-color: var(--cor-bg-alerta);
     width: 100%;
     text-align: center;
     height: 1.61em;
+    color: var(--cor-fonte-alerta);
     
 }
 

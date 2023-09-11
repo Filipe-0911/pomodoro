@@ -23,10 +23,10 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
 
     const qtdSegundos = Math.ceil((dataTermino.getTime() - dataInicio.getTime()) / 1000)
 
-    if (qtdSegundos > 3600) {
-        sec = qtdSegundos % 60
-        min = parseInt(qtdSegundos / 60)
+    if (qtdSegundos > 3600) {       
         hr = parseInt(qtdSegundos / 3600)
+        min = parseInt((qtdSegundos / 60) - 60)
+        sec = qtdSegundos % 60
     } else {
         if (qtdSegundos > 60) {
             sec = qtdSegundos % 60

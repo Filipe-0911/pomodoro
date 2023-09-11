@@ -33,11 +33,12 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
         if (qtdSegundos > 60) {
             sec = qtdSegundos % 60
             min = parseInt(qtdSegundos / 60)
-            hr = 0
+            
         } else {
             sec = qtdSegundos;
             min = 0;
         }
+        
         hr = 0
         
     }    

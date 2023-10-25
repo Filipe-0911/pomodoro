@@ -43,6 +43,6 @@ function calculaTempoDeEstudo(dataTermino, dataInicio) {
         
     }    
 
-    return exibeMensagem(`Você estudou ${hr}hr,${min}min e ${sec}seg.`)
+    return exibeMensagem(`Você estudou ${hr}h${min}min${sec}seg.`)
 
 }

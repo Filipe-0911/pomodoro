@@ -1,6 +1,7 @@
 const contadores = document.querySelectorAll(`[data-contador]`);
 const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
-const loFi = new Audio('sound/lofi2.mp3');
+// const loFi = new Audio('sound/lofi2.mp3');
+const loFi = new Audio('sound/lotrLoFi.mp3');
 const audio = new Audio('sound/alarme.mp3');
 var botoes = document.querySelectorAll(`[data-botao]`);
 var divMensagem = document.getElementById(`div_mensagem`);

@@ -1,6 +1,7 @@
 const contadores = document.querySelectorAll(`[data-contador]`);
 const elementoBaixoCaixaMsg = document.querySelector('.local-botao');
 // const loFi = new Audio('sound/lofi2.mp3');
+const loFi = new Audio('sound/lotrLoFi.mp3');
 const audio = new Audio('sound/alarme.mp3');
 var botoes = document.querySelectorAll(`[data-botao]`);
 var divMensagem = document.getElementById(`div_mensagem`);
@@ -15,31 +16,8 @@ var concentracao;
 var descanco;
 var volumeAlterado = 1;
 var tempoTimer = 1000;
-var loFi = reproduzirAudioDoIndexedDB("lotrLoFi");
-
-async function baixarLoFi() {
-    try {
-        const baixarAudio = await fetch('sound/lotrLoFi.mp3');
-        const audioBlob = await baixarAudio;
-        
-        // Aguarde a conclusão do armazenamento antes de prosseguir
-        await armazenarAudioNoIndexedDB("lotrLoFi", new Audio(audioBlob));
-    
-        console.log("Áudio armazenado no IndexedDB");
-    } catch (error) {
-        console.error("Ocorreu um erro: ", error);
-    }
-
-    
-}
-
-
-
-baixarLoFi();
-
 
 botoes.forEach(elemento => elemento.addEventListener(`mousedown`, () => {
-    
     const divDoBotao = elemento.parentNode;
     switch (elemento.innerText) {
         case 'add': adicionaTempo(divDoBotao);
@@ -111,7 +89,7 @@ function iniciaContagem(horasMinutosSegundos) {
     loFi.loop = true;
     loFi.play();
     loFi.volume = volumeAlterado;
-
+    
     botaoVolume.style.display = "block";
     botoes[7].style.display = "block";
     rodape.style.display = "none";
@@ -138,7 +116,7 @@ function iniciaContagem(horasMinutosSegundos) {
 
     const cronometroInterval = setInterval(() => {
 
-
+        
 
         if (segundos > 0) {
             segundos--;
@@ -159,7 +137,7 @@ function iniciaContagem(horasMinutosSegundos) {
                 } else {
                     loFi.loop = false;
                     audio.loop = true;
-                    audio.play();
+                    audio.play();                   
 
                     clearInterval(cronometroInterval);
                     exibeMensagem('Tempo esgotado.', criaBotaoDescanso());
@@ -168,7 +146,7 @@ function iniciaContagem(horasMinutosSegundos) {
             }
         }
 
-
+        
 
         horasMinutosSegundos[0].value = horas.toString().padStart(2, '0');
         horasMinutosSegundos[1].value = minutos.toString().padStart(2, '0');
@@ -313,11 +291,11 @@ function iniciaConcentracao() {
 }
 botaoVolume.addEventListener('click', () => {
 
-    switch (botaoVolume.innerText) {
+    switch(botaoVolume.innerText) {
         case 'volume_up': mutaAudio();
-            break;
+        break;
         case 'volume_off': desmutaAudio();
-            break;
+        break;
     }
 
 })
@@ -337,14 +315,14 @@ function mutaAudio() {
     aumentaVolume.style.display = "none";
 
 }
-function desmutaAudio() {
+function desmutaAudio () {
     if (loFi.volume == 0) {
         volumeAlterado = 0.1
     }
 
     loFi.volume = volumeAlterado;
     aumentaVolume.value = volumeAlterado * 100;
-    aumentaVolume.style.display = "block";
+    aumentaVolume.style.display = "block";    
     botaoVolume.innerText = 'volume_up';
     botaoVolume.style.color = "#0CF25D";
 
@@ -353,7 +331,7 @@ function desmutaAudio() {
 //fazer calculo da distancia de onde foi clicado para o ponto inicial do alerta (superior esquerdo)
 
 divMensagem.addEventListener("dragstart", evento => {
-
+    
     console.log(`Este é o valor do X ${evento.clientX}`)
     console.log(`Este é o valor do Y ${evento.clientY}`)
 
@@ -363,7 +341,7 @@ divMensagem.addEventListener("dragstart", evento => {
     console.log(evento.target.style.top)
 })
 
-divMensagem.addEventListener("dragend", evento => {
+divMensagem.addEventListener("dragend", evento => {  
     evento.target.style.opacity = 1
     evento.target.style.top = `${evento.pageY}px`;
     evento.target.style.left = `${evento.pageX}px`;

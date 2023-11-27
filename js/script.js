@@ -88,7 +88,7 @@ function iniciaContagem(horasMinutosSegundos) {
     var segundos = parseInt(horasMinutosSegundos[2].value);
     loFi.loop = true;
     loFi.play();
-    analyze();
+    initializeAudio();
     loFi.volume = volumeAlterado;
     
     botaoVolume.style.display = "block";

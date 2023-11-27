@@ -1,16 +1,16 @@
-const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-const cronometro = document.getElementById('apresentacao');
-const source = audioContext.createMediaElementSource(loFi);
-const analyser = audioContext.createAnalyser();
-
-source.connect(analyser);
-analyser.connect(audioContext.destination);
-analyser.fftSize = 256; 
-
-const bufferLength = analyser.frequencyBinCount;
-const dataArray = new Uint8Array(bufferLength);
-
 function analyze() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const cronometro = document.getElementById('apresentacao');
+    const source = audioContext.createMediaElementSource(loFi);
+    const analyser = audioContext.createAnalyser();
+
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+    analyser.fftSize = 256; 
+
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    
     analyser.getByteFrequencyData(dataArray);
     var array  = dataArray.filter(numero => numero > 40 && numero < 80);
     array = array.reduce((soma, valor) => soma + valor, 0) / array.length;
